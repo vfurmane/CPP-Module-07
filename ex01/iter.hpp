@@ -6,7 +6,7 @@
 /*   By: vfurmane <vfurmane@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 14:02:18 by vfurmane          #+#    #+#             */
-/*   Updated: 2022/01/08 17:55:29 by vfurmane         ###   ########.fr       */
+/*   Updated: 2022/02/04 08:51:21 by vfurmane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,15 @@
 
 # include <cstdlib>
 
-template<typename T, typename U>
-void	iter(T *arr, size_t len, U *fct)
+template<typename T>
+void	iter(T *arr, size_t len, void (*fct)(T &))
+{
+	for (size_t i = 0; i < len; i++)
+		fct(arr[i]);
+}
+
+template<typename T>
+void	iter(T *arr, size_t len, void (*fct)(const T &))
 {
 	for (size_t i = 0; i < len; i++)
 		fct(arr[i]);
